@@ -1,0 +1,13 @@
+# OS files
+.DS_Store
+.iml
+.idea
+
+# npm modules
+/node_modules
+
+# Parcel cache folder
+.cache
+
+# Composer files
+/vendor
