@@ -21,7 +21,7 @@ help you to make that possible.
 ### Translation dialog
 <img width="977" alt="Bildschirmfoto 2021-11-27 um 17 03 47" src="https://user-images.githubusercontent.com/965069/143829633-11284c55-e8ae-4f0c-b074-1f1d08dfead2.png">
 
-### Unsaved chnages
+### Unsaved changes
 <img width="977" alt="Bildschirmfoto 2021-11-27 um 17 04 05" src="https://user-images.githubusercontent.com/965069/143829640-cfeab1b9-ad58-4e48-9da1-974a6439ebfe.png">
 
 ### Confirm dialog
