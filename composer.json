@@ -1,26 +1,26 @@
 {
-  "name": "gearsdigital/localizer-for-kirby",
-  "description": "A plugin to override _Panel_ and _Plugin_ translations.",
-  "version": "1.0.0",
-  "license": "MIT",
-  "type": "kirby-plugin",
-  "authors": [
-    {
-      "name": "Steffen Giers",
-      "email": "steffen.giers@gmail.com"
+    "name": "gearsdigital/localizer-for-kirby",
+    "description": "A plugin to override _Panel_ and _Plugin_ translations.",
+    "version": "1.0.0",
+    "license": "MIT",
+    "type": "kirby-plugin",
+    "authors": [
+        {
+            "name": "Steffen Giers",
+            "email": "steffen.giers@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "getkirby/composer-installer": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "gearsdigital\\localizer\\": "src/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
     }
-  ],
-  "require": {
-    "php": ">=7.4",
-    "getkirby/composer-installer": "^1.1"
-  },
-  "autoload": {
-    "psr-4": {
-      "gearsdigital\\localizer\\": "src/"
-    }
-  },
-  "config": {
-    "optimize-autoloader": true,
-    "sort-packages": true
-  }
 }
