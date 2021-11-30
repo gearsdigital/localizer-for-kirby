@@ -70,7 +70,7 @@ import LocalizerLanguageDialog from "./LocalizerLanguageDialog.vue";
 import LocalizerTranslationList from "./LocalizerTranslationList.vue";
 
 export default {
-  name: "TranslationOverride",
+  name: "PanelLocalizer",
   components: {
     LocalizerTranslationList,
     LocalizerLanguageDialog,
