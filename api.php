@@ -12,7 +12,7 @@ $localisations = $contentRoot.DS.'localizer'.DS."localisations.json";
 return [
     'routes' => [
         [
-            'pattern' => '/localizer/translations',
+            'pattern' => '/localizer',
             'method' => 'get',
             'action' => function () use ($path) {
                 try {
@@ -33,7 +33,7 @@ return [
             },
         ],
         [
-            'pattern' => '/localizer/translations',
+            'pattern' => '/localizer',
             'method' => 'post',
             'action' => function () use ($path) {
                 $translations = kirby()->request()->body()->data();
