@@ -1,7 +1,14 @@
 <template>
-  <k-loader v-if="!pagedTranslationDataList.length" />
-  <article v-else>
-    <k-items class="k-panel-localizer-translations">
+  <div>
+    <k-input
+      v-model="q"
+      :icon="isLoading ? 'loader' : 'search'"
+      :placeholder="$t('search') + ' …'"
+      autofocus="true"
+      class="k-dialog-search"
+      type="text" />
+
+    <k-items v-if="pagedTranslationDataList.length > 0" class="k-panel-localizer-translations">
       <k-item
         v-for="entry in pagedTranslationDataList"
         :key="entry.key"
@@ -11,6 +18,9 @@
         layout="cards"
         @click="$emit('select', entry)" />
     </k-items>
+
+    <k-empty v-else>Nothing found</k-empty>
+
     <k-pagination
       ref="pagination"
       align="center"
@@ -18,7 +28,7 @@
       :limit="pagination.limit"
       :total="pagination.total"
       @paginate="updatePagination" />
-  </article>
+  </div>
 </template>
 
 <script>
@@ -38,6 +48,7 @@ export default {
         total: 0,
         page: 1,
       },
+      q: null,
     };
   },
   computed: {
@@ -54,6 +65,19 @@ export default {
     selectedTranslations() {
       return this.$store.getters.getTranslationsForLanguage(this.code);
     },
+    isLoading() {
+      return this.$store.state.isLoading;
+    },
+  },
+  watch: {
+    q: function (val, oldVal) {
+      if (val !== oldVal) {
+        this.fetchTranslations();
+      }
+    },
+  },
+  created() {
+    this.fetchTranslations = this.$helper.debounce(this.fetchTranslations, 250);
   },
   mounted() {
     this.fetchTranslations();
@@ -62,8 +86,9 @@ export default {
     async fetchTranslations(page = 1) {
       const { data, pagination } = await this.$api.get(`localizer/translations/${this.code}`, {
         page,
+        q: this.q,
       });
-      this.translations = data;
+      this.translations = data ?? [];
       this.pagination = pagination;
     },
     updatePagination(pagination) {

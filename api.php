@@ -5,6 +5,7 @@ use Kirby\Filesystem\Dir;
 use Kirby\Filesystem\F;
 use Kirby\Http\Response;
 use Kirby\Toolkit\Collection;
+use Kirby\Toolkit\Str;
 
 $contentRoot = kirby()->root('content');
 $path = $contentRoot.DS.'localizer';
@@ -66,8 +67,18 @@ return [
             'action' => function ($code) {
                 $page = get('page', 1);
                 $limit = get('limit', 10);
+                $q = trim(get('q'));
                 $translations = kirby()->translations()->find($code ?? 'en');
-                $collection = new Collection($translations->data());
+
+                if (!empty($q)) {
+                    $filteredTranslations = array_filter(
+                        $translations->data(),
+                        fn($v, $k) => Str::contains($k, $q) || Str::contains($v, $q),
+                        ARRAY_FILTER_USE_BOTH
+                    );
+                }
+
+                $collection = new Collection($filteredTranslations ?? $translations->data());
 
                 $pagedCollection = $collection->paginate([
                     'page' => $page,
