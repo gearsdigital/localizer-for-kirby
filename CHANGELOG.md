@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/gearsdigital/localizer-for-kirby/compare/v1.0.0...v1.1.0) (2021-12-01)
+
+
+### Features
+
+* add real pagination for translations endpoint and remove the poor-mans pager ([ec5ef06](https://github.com/gearsdigital/localizer-for-kirby/commit/ec5ef06a3cfa2ea5b674120130e6daa50466f28c)), closes [#3](https://github.com/gearsdigital/localizer-for-kirby/issues/3)
+
 # 1.0.0 (2021-11-30)
 
 
