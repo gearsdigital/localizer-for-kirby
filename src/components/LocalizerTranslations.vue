@@ -16,7 +16,7 @@
       align="center"
       :details="true"
       :limit="pagination.limit"
-      :total="paginationTotal"
+      :total="pagination.total"
       @paginate="updatePagination" />
   </article>
 </template>
@@ -41,10 +41,7 @@ export default {
     };
   },
   computed: {
-    paginationTotal() {
-      return this.translationDataList.length;
-    },
-    translationDataList() {
+    pagedTranslationDataList() {
       if (Object.keys(this.translations).length === 0) {
         return [];
       }
@@ -54,15 +51,6 @@ export default {
         disabled: this.selectedTranslations.includes(entry[0]),
       }));
     },
-    pagedTranslationDataList() {
-      if (this.translationDataList.length === 0) {
-        return [];
-      }
-
-      // This is only poor-mans pager because the /translations/:lang
-      // endpoint isn't pagable out of the box.
-      return this.translationDataList.slice(this.pagination.offset).slice(0, this.pagination.limit);
-    },
     selectedTranslations() {
       return this.$store.getters.getTranslationsForLanguage(this.code);
     },
@@ -71,11 +59,15 @@ export default {
     this.fetchTranslations();
   },
   methods: {
-    async fetchTranslations() {
-      const { data } = await this.$api.get(`translations/${this.code}`);
+    async fetchTranslations(page = 1) {
+      const { data, pagination } = await this.$api.get(`localizer/translations/${this.code}`, {
+        page,
+      });
       this.translations = data;
+      this.pagination = pagination;
     },
     updatePagination(pagination) {
+      this.fetchTranslations(pagination.page);
       this.pagination = pagination;
     },
   },

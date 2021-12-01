@@ -4,6 +4,7 @@ use Kirby\Data\Json;
 use Kirby\Filesystem\Dir;
 use Kirby\Filesystem\F;
 use Kirby\Http\Response;
+use Kirby\Toolkit\Collection;
 
 $contentRoot = kirby()->root('content');
 $path = $contentRoot.DS.'localizer';
@@ -57,6 +58,26 @@ return [
                 }
 
                 return Response::json($translations);
+            },
+        ],
+        [
+            'pattern' => '/localizer/translations/(:alpha)',
+            'method' => 'get',
+            'action' => function ($code) {
+                $page = get('page', 1);
+                $limit = get('limit', 10);
+                $translations = kirby()->translations()->find($code ?? 'en');
+                $collection = new Collection($translations->data());
+
+                $pagedCollection = $collection->paginate([
+                    'page' => $page,
+                    'limit' => $limit,
+                ]);
+
+                return Response::json([
+                    'data' => $pagedCollection->toArray(),
+                    'pagination' => $pagedCollection->pagination()->toArray(),
+                ]);
             },
         ],
     ],
