@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/gearsdigital/localizer-for-kirby/compare/v1.1.0...v1.2.0) (2021-12-01)
+
+
+### Features
+
+* basic translation search ([6327a8a](https://github.com/gearsdigital/localizer-for-kirby/commit/6327a8a7b57bdf352f985ee654dd85f0cab64c87)), closes [#1](https://github.com/gearsdigital/localizer-for-kirby/issues/1)
+
 # [1.1.0](https://github.com/gearsdigital/localizer-for-kirby/compare/v1.0.0...v1.1.0) (2021-12-01)
 
 

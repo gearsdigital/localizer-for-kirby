@@ -1,7 +1,7 @@
 {
     "name": "gearsdigital/localizer-for-kirby",
     "description": "A plugin to override _Panel_ and _Plugin_ translations.",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "license": "MIT",
     "type": "kirby-plugin",
     "authors": [
