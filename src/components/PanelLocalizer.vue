@@ -117,12 +117,12 @@ export default {
       this.$store.dispatch(LANGUAGES_UPDATE, data);
     },
     async loadTranslations() {
-      const translations = await this.$api.get("/localizer/translations");
+      const translations = await this.$api.get("/localizer");
       this.$store.dispatch(TRANSLATIONS_UPDATE, translations);
       this.$store.dispatch(PERSIST);
     },
     async save() {
-      await this.$api.post("/localizer/translations", this.translations);
+      await this.$api.post("/localizer", this.translations);
       this.$store.dispatch(TRANSLATIONS_UPDATE, this.translations);
       this.$store.dispatch(PERSIST);
       this.$store.dispatch(DIRTY_CHECK);
