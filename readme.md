@@ -11,6 +11,12 @@ an [issue](https://github.com/gearsdigital/localizer-for-kirby/issues/new).
 - [ ] Add translations (I know, I know ¯\_(ツ)_/¯)
 - [ ] Add tests
 
+## Installation
+
+```
+composer require gearsdigital/localizer-for-kirby
+```
+
 ## What is this about?
 
 This plugin lets you change every localized string within the panel – plugins included. Sometimes you want to change a text to fit your needs better. _Localizer for Kirby_ will
