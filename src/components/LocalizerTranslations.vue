@@ -8,7 +8,7 @@
       class="k-dialog-search"
       type="text" />
 
-    <k-items v-if="pagedTranslationDataList.length > 0" class="k-panel-localizer-translations">
+    <div v-if="pagedTranslationDataList.length > 0" class="k-panel-localizer-translations">
       <k-item
         v-for="entry in pagedTranslationDataList"
         :key="entry.key"
@@ -17,7 +17,7 @@
         :class="{ disabled: entry.disabled }"
         layout="cards"
         @click="$emit('select', entry)" />
-    </k-items>
+    </div>
 
     <k-empty v-else>Nothing found</k-empty>
 
@@ -109,12 +109,13 @@ export default {
 
 .k-panel-localizer-translations {
   display: grid;
-}
-
-.k-panel-localizer-translations {
   margin-top: var(--spacing-4);
   grid-gap: var(--spacing-2px);
   grid-template-columns: 1fr;
+
+  .k-item {
+    margin-bottom: 4px;
+  }
 }
 
 .disabled {

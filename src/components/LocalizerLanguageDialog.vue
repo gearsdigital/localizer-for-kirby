@@ -9,7 +9,7 @@
         </k-text>
       </header>
 
-      <k-items class="k-panel-localizer-translations">
+      <div class="k-panel-localizer-translations">
         <k-item
           v-for="lang in languages"
           :key="lang.id"
@@ -17,7 +17,7 @@
           :info="lang.id"
           :class="{ disabled: lang.disabled }"
           @click="selectLanguage(lang)" />
-      </k-items>
+      </div>
 
       <template slot="footer">
         <k-button-group>
@@ -73,6 +73,10 @@ export default {
   .disabled {
     pointer-events: none;
     opacity: 0.5;
+  }
+
+  .k-item {
+    margin-bottom: 4px;
   }
 }
 </style>
