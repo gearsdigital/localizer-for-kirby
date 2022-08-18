@@ -67,7 +67,7 @@ return [
             'action' => function ($code) {
                 $page = get('page', 1);
                 $limit = get('limit', 10);
-                $q = trim(get('q'));
+                $q = trim(get('q', ''));
                 $translations = kirby()->translations()->find($code ?? 'en');
 
                 if (!empty($q)) {
